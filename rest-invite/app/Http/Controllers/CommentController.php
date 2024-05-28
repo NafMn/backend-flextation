@@ -9,15 +9,15 @@ class CommentController extends Controller
 {
     public function index()
     {
-        $comments = Comment::all();
+        $comments = Comment::with('user')->get();
         return response()->json($comments);
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'comment' => 'required',
+            'commenter_name' => 'required',
+            'content' => 'required',
             'kehadiran' => 'required|in:hadir,belum tahu,tidak hadir', // Validasi untuk 'kehadiran'
         ]);
       
@@ -32,14 +32,15 @@ class CommentController extends Controller
 
     public function show(Comment $comment)
     {
+        $comment->load('user'); 
         return response()->json($comment);
     }
 
     public function update(Request $request, Comment $comment)
     {
         $request->validate([
-            'name' => 'required',
-            'comment' => 'required',
+            'commenter_name' => 'required',
+            'content' => 'required',
             'kehadiran' => 'required|in:hadir,belum tahu,tidak hadir', 
         ]);
 
