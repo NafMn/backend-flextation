@@ -20,8 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // rest-api comments
-Route::get('comments', [CommentController::class, 'index']);
-Route::post('comments', [CommentController::class, 'store']);
-Route::get('comments/{comment}', [CommentController::class, 'show']);
-Route::put('comments/{comment}', [CommentController::class, 'update']);
-Route::delete('comments/{comment}', [CommentController::class, 'destroy']);
+Route::get('v1/comments', [CommentController::class, 'index']);
+Route::post('v1/comments', [CommentController::class, 'store']);
+Route::get('v1/comments/{comment}', [CommentController::class, 'show']);
+Route::put('v1/comments/{comment}', [CommentController::class, 'update']);
+Route::delete('v1/comments/{comment}', [CommentController::class, 'destroy']);
