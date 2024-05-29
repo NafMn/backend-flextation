@@ -12,11 +12,11 @@ class CreateCommentsTable extends Migration
     public function up(): void
     {
         Schema::create('comments', function (Blueprint $table) {
-            $table->id(); 
+            $table->id('comment_id'); 
             $table->unsignedBigInteger('user_id');
             $table->string('commenter_name');
             $table->text('content'); 
-            $table->enum('kehadiran', ['Hadir', 'Tidak Hadir', 'Izin']);
+            $table->enum('kehadiran', ['Hadir', 'Tidak Hadir', 'Belum Tau']);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

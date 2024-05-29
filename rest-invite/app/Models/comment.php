@@ -8,9 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class comment extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'comment', 'kehadiran'];
 
-    protected $rules = [
-        'kehadiran' => 'in:hadir,belum tahu,tidak hadir', // aturan validasi untuk kolom 'kehadiran'
-    ];
+    protected $primaryKey = 'comment_id';
+    protected $fillable = ['user_id', 'commenter_name', 'content', 'kehadiran'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

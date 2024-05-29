@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AuthComments;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +27,9 @@ Route::post('v1/comments', [CommentController::class, 'store']);
 Route::get('v1/comments/{comment}', [CommentController::class, 'show']);
 Route::put('v1/comments/{comment}', [CommentController::class, 'update']);
 Route::delete('v1/comments/{comment}', [CommentController::class, 'destroy']);
+
+
+Route::get('v1/comments/user/{id}', [CommentController::class, 'getCommentsByUser']);
+
+
+Route::post('v1/login', [AuthComments::class, 'login']);
